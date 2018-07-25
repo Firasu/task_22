@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from rest_framework_jwt.views import obtain_jwt_token
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,7 +26,7 @@ from api.views import (
     RestaurantDeleteView,
     RestaurantCreateView,
     RegisterView,
-    LoginView,
+    
 )
 
 urlpatterns = [
@@ -50,7 +51,7 @@ urlpatterns = [
     path('api/<int:restaurant_id>/update/', RestaurantUpdateView.as_view(), name='api-update'),
     path('api/<int:restaurant_id>/delete/', RestaurantDeleteView.as_view(), name='api-delete'),
     path('api/register/', RegisterView.as_view(), name='api-register'),
-    path('api/login/', LoginView.as_view(), name='api-login'),
+    path('api-token-auth/', obtain_jwt_token, name='api-login')
 ]
 
 if settings.DEBUG:

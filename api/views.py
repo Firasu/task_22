@@ -17,8 +17,7 @@ from .permissions import IsOwner
 from rest_framework.filters import OrderingFilter, SearchFilter
 
 
-#Complete ME!
-class LoginView():
+
 
 
 class RegisterView(CreateAPIView):
